@@ -11,6 +11,9 @@ export default function App() {
     <Provider>
       <div className="App">
         <Header />
+        <div>
+          Bili
+        </div>
         <div className="container">
           <AddContact/>
           <Liste />
