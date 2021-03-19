@@ -8,6 +8,7 @@ export default class Liste extends Component {
         return (
             <Consumer>
                 {value => {
+                    console.log(value);
                     return (
                         <React.Fragment>
                             {value.contacts.map(contact => (
