@@ -5,20 +5,28 @@ import Liste from './Composants/Contact/Liste.js'
 import Contenu from './Composants/Contenu.js'
 import { Provider } from './Context.js'
 import AddContact from './Composants/Contact/AddContact'
+import { HashRouter as HashRouter, Route, Switch } from 'react-router-dom'
+import Apropos from './Composants/Pages/Apropos.js'
+import Erreur from './Composants/Pages/Erreur.js'
 
 export default function App() {
   return (
     <Provider>
-      <div className="App">
-        <Header />
-        <div>
-          Bili
+      <HashRouter>
+        <div className="App">
+          <Header />
+          <div className="container">
+            {/* <AddContact /> */}
+            <Switch>
+              <Route exact path="/" component={Liste} />
+              <Route exact path="/Liste" component={Liste} />
+              <Route exact path="/ajoute" component={AddContact} />
+              <Route exact path="/apropos" component={Apropos} />
+              <Route component={Erreur} />
+            </Switch>
+          </div>
         </div>
-        <div className="container">
-          <AddContact/>
-          <Liste />
-        </div>
-      </div>
+      </HashRouter>
     </Provider>
   )
 }

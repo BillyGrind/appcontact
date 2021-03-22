@@ -14,23 +14,24 @@ export default class AddContact extends Component {
     onChange = e => this.setState({ [e.target.name]: e.target.value })
 
     onSubmit = (dispatch, e) => {
-        console.log(123);
-        e.preventDefault()
+       e.preventDefault()
         const newContact = {
-            id : uuidv4(),
+            id: uuidv4(),
             nom: this.state.nom,
             email: this.state.email,
             tel: this.state.tel,
 
         }
-        console.log('newContact',newContact)
+
         dispatch({ type: 'ADD_CONTACT', payload: newContact })
 
-    //     this.setState({
-    //         nom: '',
-    //         email: '',
-    //         tel: '',
-    //     })
+        this.setState({
+            nom: '',
+            email: '',
+            tel: '',
+        })
+        
+        this.props.history.push('/')
     }
 
     render() {
@@ -40,7 +41,7 @@ export default class AddContact extends Component {
                     return (<div className="card mb-3">
                         <div className="card-header">Ajouter un contact</div>
                         <div className="card-body">
-                            <form onSubmit={this.onSubmit.bind(this, value.dispatch),console.log('Billy')}>
+                            <form onSubmit={this.onSubmit.bind(this, value.dispatch)}>
                                 <div className="form-group">
                                     <label htmlFor="nom">Nom</label>
                                     <input type="text"
@@ -76,15 +77,15 @@ export default class AddContact extends Component {
                                     />
                                 </div>
                                 <input
-                                    type="submit"
+                                    type="button"
                                     value="Ajouter un contact"
                                     className="btn btn-block btn-primary"
-                                    // onClick={this.onSubmit}
+                                    onClick={this.onSubmit.bind(this, value.dispatch)}
                                 />
                             </form>
                         </div>
-
-                    </div>)
+                    </div>
+                    )
                 }}
             </Consumer>
         )
